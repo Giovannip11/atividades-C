@@ -8,12 +8,19 @@ void imprime(int n){
     }
     
 }
+void imprimecresc(int n){
+    if(n>=0){
+   
+    imprimecresc(n-1);
+    printf(" \noi%d",n);
+    }
+}
 int main()
 {
     int x;
     printf("Digite o valor de n:");
     scanf("%i",&x);
     imprime(x);
-
+    imprimecresc(x);
     return 0;
 }
