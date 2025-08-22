@@ -1,4 +1,4 @@
-
+//Terminar em casa...
 #include <stdio.h>
 
 int achar(int n,int *A,int tamanho){
@@ -25,6 +25,27 @@ int acharORD(int m,int *B, int tamanho){
     return-1;
     
 }
+int busca_binária(int v,int *B,int tamanho){
+    int i;
+    int posicaoI;
+    posicaoI= tamanho / 2;
+    if (B[posicaoI]==v){
+        return v;
+    }
+    while(B[posicaoI]>v){
+        i--;
+        if(B[posicaoI]==v){
+            return v;
+        }
+    }
+    while (B[posicaoI]<v){
+        i++;
+        if (B[posicaoI]==v){
+            return v;
+        }
+    }
+    return -1;
+}
 
 int main()
 {
@@ -34,6 +55,7 @@ int main()
     int x;
     int resultado;
     int resultado2;
+    int resultado3;
     int tamanho = 7;
     printf("Digite o numero que deseja encontrar:");
     scanf("%i",&x);
@@ -41,6 +63,10 @@ int main()
     printf("%d\n",resultado);
     resultado2=acharORD(x,B,tamanho);
     printf("%d\n",resultado2);
+    resultado3=busca_binária(x,B,tamanho);
+    printf("%d\n",resultado3);
+    
+    
    
 
     return 0;
