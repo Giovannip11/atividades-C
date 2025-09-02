@@ -11,11 +11,13 @@ for (i=0;i<n;i++){
 }
 
 void bubbleSort(int *A,int n){
-int i,esq,dir,j;
+int i,t,j;
 for (i=0;i<n-1;i++){
     for(j=0;j<n-1-i;j++){
+
         if(A[j]>A[j+1]){
-        int t = A[i];
+        t = A[j];
+        A[j]=A[j+1];
         A[j+1] = t;
         }
     }
