@@ -1,4 +1,3 @@
-//terminar essa porra que ta tudo errado
 #include <stdio.h>
 void imprimir(int *A,int n){
 int i;
@@ -14,12 +13,12 @@ void insertionSort(int *A,int n){
     for(i=1;i<n;i++){
         aux = A[i];
         j=i-1;
-    }
-    while(j>=0 && A[j]>aux){
+        while(j>=0 && A[j]>aux){
         A[j+1]=A[j];
         j = j-1;
     }
     A[j+1] = aux;
+    }
 }
 
 int main(void){
@@ -33,6 +32,9 @@ int main(void){
 
 return 0;
 }
+
+
+
 
 
 
