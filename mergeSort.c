@@ -11,18 +11,58 @@ void mergeSort(int *V, int inicio, int fim){
     }
     
 }
-void merge(int *V,int direita,int esquerda ){
-    int i,j,k;
+void merge(int *V, int inicio, int meio, int fim) {
+    int i = inicio, j = meio + 1, k = 0;
+    int tamanho = fim - inicio + 1;
+    int *temp = (int *)malloc(tamanho * sizeof(int));
 
-    
-    
-   
-    int temp=(int *)malloc(tamanho*sizeof(int));
+    if (temp == NULL) {
+        printf("Erro de alocação de memória!\n");
+        exit(1);
+    }
+
+    while (i <= meio && j <= fim) {
+        if (V[i] <= V[j]) {
+            temp[k++] = V[i++];
+        } else {
+            temp[k++] = V[j++];
+        }
+    }
+
+    while (i <= meio) {
+        temp[k++] = V[i++];
+    }
+
+    while (j <= fim) {
+        temp[k++] = V[j++];
+    }
+
+    for (i = 0; i < tamanho; i++) {
+        V[inicio + i] = temp[i];
+    }
+
+    free(temp);
 }
     
 int main()
 {
     
+ int V[] = {38, 27, 43, 3, 9, 82, 10};
+    int n = sizeof(V) / sizeof(V[0]);
+
+    printf("Vetor original:\n");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", V[i]);
+    }
+    printf("\n");
+
+    mergeSort(V, 0, n - 1);
+
+    printf("Vetor ordenado:\n");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", V[i]);
+    }
+    printf("\n");
 
     return 0;
 }
