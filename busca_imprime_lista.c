@@ -58,13 +58,48 @@ void busca_lista(Lista *lista,int valor)
         aux = aux  -> seg;
     }
     
+}
+
+void libera_lista(Lista *lista){
+    if(lista != NULL){
+        cel * aux;
+        while(*lista != NULL){ //Apagando todos os nós um a um;
+            aux = *lista;
+            *lista = (*lista)-> seg; //*lista = aux->seg;
+            free(aux);
+        }
+        free(lista);//Apaga a lista 
+    }
+}
+int remove_lista(Lista* lista, int x){
+    if(lista==NULL){
+        return 0;
+    }
+    if(*lista==NULL){
+        return 0;
+    }
+    
+    cel *ant, *aux = *lista;
+    while (aux != NULL && aux->conteudo!=x){
+        ant = aux;
+        aux = aux->seg;
+    }
+    if(aux == NULL){
+        return 0;
+    }
+    if(aux==*lista){
+        *lista = aux->seg;
+    }else{
+        ant->seg = aux -> seg;
+    }
+    free(aux);
+    return 1;
     
 }
 
-
 int main(void) {
   Lista *lst;
-  int n;
+  int n,x;
   lst = cria_lista();
   insere_lista_fim(lst, 1);
   insere_lista_fim(lst, 2);
@@ -78,6 +113,11 @@ int main(void) {
   printf("Digite o valor a ser procurado:");
   scanf("%d",&n);
   busca_lista(lst,n);
+  printf("\nDigite o valor a ser removido:");
+  scanf("%d",&x);
+  remove_lista(lst,x);
+  
+  imprime_lista(lst);
 
   return 0;
 }
