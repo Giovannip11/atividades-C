@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+// add imprimir, acho q n adicionei...
 typedef struct cel{
     int cont;
     struct cel *prox;
