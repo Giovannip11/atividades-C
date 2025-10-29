@@ -1,4 +1,4 @@
-// uma função que copie uma lista L1 para uma lista L2 removendo os elementos repetidos.
+// uma função que copie uma lista L1 para uma lista L2 removendo os elementos repetidos().
 //Faça uma função que inverta a ordem dos elementos de uma lista.
 // uma função que copie uma lista encadeada para um vetor.
 //Faça uma função que verifique se duas listas encadeadas são iguais.
@@ -43,16 +43,45 @@ int insere_lista_fim(Lista *lista, int x){
     }
     return 1;
 }
-void removeRepetidos(Lista lst1){
-    if(lst1==NULL){
-        printf("Lista n existe");
-    }
-cel *temp = lst1;
-    while(temp->prox!=NULL){
+void removeRepetidos(Lista lst1) {
+    if (lst1 == NULL) return;
 
+    cel *atual = lst1;
+    while (atual != NULL && atual->prox != NULL) {
+        cel *anterior = atual;
+        cel *comparador = atual->prox;
 
+        while (comparador != NULL) {
+            if (comparador->cont == atual->cont) {
+                anterior->prox = comparador->prox;
+                free(comparador);
+                comparador = anterior->prox;
+            } else {
+                anterior = comparador;
+                comparador = comparador->prox;
+            }
+        }
+        atual = atual->prox;
     }
 }
+void inverteOrdem(Lista lst1){
+    if(lst1 == NULL){
+        printf("A lista n existe");
+    }
+    cel *anterior = NULL;
+    cel *atual = lst1;
+    cel *proximo = NULL;
+
+    while (atual != NULL) {
+        proximo = atual->prox; 
+        atual->prox = anterior;  
+        anterior = atual;        
+        atual = proximo;         
+    }
+
+    lst1 = anterior;
+}
+
 int main (void){
     Lista *lst1 = criaLista();
     insere_lista_fim(lst1,1);
