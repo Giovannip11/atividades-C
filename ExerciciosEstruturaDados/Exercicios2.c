@@ -1,5 +1,5 @@
-// uma função que copie uma lista L1 para uma lista L2 removendo os elementos repetidos().
-//Faça uma função que inverta a ordem dos elementos de uma lista.
+// uma função que copie uma lista L1 para uma lista L2 removendo os elementos repetidos(feito).
+//Faça uma função que inverta a ordem dos elementos de uma lista.(feito)
 // uma função que copie uma lista encadeada para um vetor.
 //Faça uma função que verifique se duas listas encadeadas são iguais.
 //Faça uma função que verifique se uma lista está contida na outra.
