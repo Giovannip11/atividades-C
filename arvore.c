@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+//Inserção na arvore binária, atentar nas exceções.
 
 typedef struct NO{
     int info;
