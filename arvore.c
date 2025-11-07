@@ -46,7 +46,35 @@ void posOrdem_ArvBin (ArvBin *raiz){
         printf(" %d |",(*raiz)->info);
     }
 }
-
+int totalNosArvBin(ArvBin *raiz){
+    if(raiz==NULL){
+        return 0;
+    }
+    if(*raiz==NULL){
+        return 0;
+    }
+    
+    int total_esq=totalNosArvBin(&((*raiz)->esq));
+    int total_dir=totalNosArvBin(&((*raiz)->dir));
+    
+    return total_esq+total_dir+1;
+}
+int altura_arvBin(ArvBin *raiz){
+    if(raiz==NULL){
+        return -1;
+    }
+    if(*raiz==NULL){
+        return -1;
+    }
+    
+    int alt_esq = altura_arvBin(&((*raiz)->esq));
+    int alt_dir = altura_arvBin(&((*raiz)->dir));
+    if(alt_esq>alt_dir){
+        return alt_esq+1;
+    }else{
+        return alt_dir+1;
+    }
+}
 int main()
 {
     printf("Inicio\n");
@@ -91,6 +119,11 @@ int main()
     emOrdem_ArvBin(raiz);
     printf("\nPós-Ordem:\n");
     posOrdem_ArvBin(raiz);
+    
+    printf("\nTOTAL DE NOS:\n");
+    printf("%d",totalNosArvBin(raiz));
+    printf("\nAltura:\n");
+    printf("%d",altura_arvBin(raiz));
 	
 
 }
