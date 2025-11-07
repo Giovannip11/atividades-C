@@ -75,6 +75,24 @@ int altura_arvBin(ArvBin *raiz){
         return alt_dir+1;
     }
 }
+int busca_binaria(ArvBin *raiz,int x){
+    if(raiz==NULL){
+        return 0;
+    }
+    NO * atual = *raiz;
+    
+    while(atual != NULL){
+        if(valor == atual->info){
+            return 1;
+        }
+        if(valor>atual->info){
+            atual = atual->dir;
+        }else{
+            atual= atula->esq;
+        }
+    }
+    return 0;
+}
 int main()
 {
     printf("Inicio\n");
@@ -84,31 +102,31 @@ int main()
 	NO a,b, c, d, e, f, g, h, i;
 	NO *converte = &a;
 
-	a.info = 15;
+	a.info = 80;
 	a.esq = &b;
 	a.dir = &c;
-	b.info = 20;
+	b.info = 60;
 	b.esq = &d;
 	b.dir = &e;
-	c.info = 7;
+	c.info = 90;
 	c.esq = &f;
 	c.dir = &g;
-	d.info = 2;
+	d.info = 50;
 	d.esq = NULL;
 	d.dir = NULL;
-	e.info = 32;
+	e.info = 70;
 	e.esq = &h;
 	e.dir = NULL;
-	h.info = 5;
+	h.info = 65;
 	h.esq = NULL;
 	h.dir = NULL;
-	f.info = 3;
+	f.info = 85;
 	f.esq = NULL;
 	f.dir = NULL;
-	g.info = 10;
+	g.info = 110;
 	g.esq = &i;
 	g.dir = NULL;
-	i.info = 1;
+	i.info = 100;
 	i.esq = NULL;
 	i.dir = NULL;
     
