@@ -76,7 +76,7 @@ int altura_arvBin(ArvBin *raiz){
         return alt_dir+1;
     }
 }
-int busca_binaria(ArvBin *raiz,int x){
+/*int busca_binaria(ArvBin *raiz,int x){
     if(raiz==NULL){
         return 0;
     }
@@ -89,10 +89,65 @@ int busca_binaria(ArvBin *raiz,int x){
         if(valor>atual->info){
             atual = atual->dir;
         }else{
-            atual= atula->esq;
+            atual= atual->esq;
         }
     }
     return 0;
+}*/
+void libera_NO(NO *no){
+    if(no == NULL){
+        return;
+    }
+    libera_NO(no->esq);
+    libera_NO(no->dir);
+    
+    free(no);
+    no = NULL;
+}
+void libera_ArvBin(ArvBin *raiz){
+    if(raiz==NULL){
+        return ;
+    }
+    libera_NO(*raiz);
+    free(raiz);
+}
+
+int insere_ArvBin(ArvBin *raiz,int valor){
+    if(*raiz==NULL){
+        return 0;
+    }
+    NO * novo = (NO*)malloc(sizeof(NO));
+    if(novo==NULL){
+        return 0;
+    }
+    novo->info=valor;
+    novo->dir=NULL;
+    novo->esq=NULL;
+    
+    if(*raiz==NULL){
+        *raiz = novo;
+    }else{
+        NO *atual = *raiz;
+        NO *ant = NULL;
+        while(atual !=NULL){
+            ant = atual;
+            if(valor == atual->info){
+                free(novo);
+                return 0;
+            }
+            if(valor>atual->info){
+                atual=atual->dir;
+            }else{
+                atual=atual->esq;
+            }
+        } 
+        if(valor>ant->info){
+            ant->dir=novo;
+        }else{
+            ant->esq=novo;
+        }
+    }
+    return 1;
 }
 int main()
 {
